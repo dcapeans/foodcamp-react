@@ -2,7 +2,7 @@ import React from "react"
 
 export default function Counter(props) {
     const { setIsChecked} = props
-    const [value, setValue] = React.useState(0)
+    const [value, setValue] = React.useState(1)
 
     function increase(){
         setValue(value + 1)
@@ -12,7 +12,6 @@ export default function Counter(props) {
         if(value > 1){
             setValue(value - 1)
         } else if (value === 1) {
-            setValue(value - 1)
             setIsChecked("")
         }
     }

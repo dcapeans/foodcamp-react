@@ -8,8 +8,6 @@ export default function Card(props) {
     function ClickHandler() {
         if(isChecked === ""){
             setIsChecked("checked")
-        } else {
-            setIsChecked("")
         }
     }
 
