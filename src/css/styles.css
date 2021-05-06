@@ -85,13 +85,32 @@ header p {
     font-size: 16px;
 }
 
-.checkmark {
-    opacity: 1;
-    font-size: 20px;
-    color: #32b72f;
+.counter {
+    display: none;
+}
+
+.checked .counter {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
     position: absolute;
-    bottom: 10px;
+    bottom: 7px;
     right: 10px;
+}
+
+.counter button {
+    border-style: none;
+    background-color: transparent;
+    font-size: 22px;
+}
+
+.minus__button {
+    color: red;
+    margin-bottom: 0px;
+}
+
+.plus__button {
+    color: green;
 }
 
 .confirmation__window {

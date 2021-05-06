@@ -1,4 +1,5 @@
 import React from "react"
+import Counter from "./Counter"
 
 export default function Card(props) {
     const { name, image, text, price } = props
@@ -18,7 +19,7 @@ export default function Card(props) {
             <p className="item__title">{name}</p>
             <p className="item__text">{text}</p>
             <p className="item__price">R$ <span className="price__value">{price}</span></p>
-            <ion-icon name="checkmark-circle" class="hidden"></ion-icon>
+            <Counter setIsChecked={setIsChecked}/>
         </article>
     )
 }
