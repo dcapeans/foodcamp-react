@@ -185,6 +185,6 @@ footer {
     background: #32b72f;
 }
 
-.active {
+.checked {
     box-shadow: inset 0 0 0 4px #32b72f;
 }

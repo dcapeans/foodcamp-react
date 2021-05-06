@@ -2,8 +2,8 @@ import DessertSection from "./DessertSection";
 import DrinkSection from "./DrinkSection";
 import FoodSection from "./FoodSection";
 
-const data = [
-    [
+const data = {
+    foodData: [
         {
             name: "Frango Yin Yang",
             image: "/assets/img/frango_yin_yang 1.png",
@@ -29,7 +29,7 @@ const data = [
             price: "20,00"
         },
     ],
-    [
+    drinkData: [
         {
             name: "Coquinha gelada",
             image: "/assets/img/coquinha_gelada 1.png",
@@ -55,7 +55,7 @@ const data = [
             price: "7,00"
         },
     ],
-    [
+    dessertData: [
         {
             name: "Pudim",
             image: "/assets/img/pudim 1.png",
@@ -81,13 +81,13 @@ const data = [
             price: "9,00"
         },
     ],
-]
+}
 
-const [foodData, drinkData, dessertData] = data
+const {foodData, drinkData, dessertData} = data
 
 export default function Content() {
     return (
-        <section class="content">
+        <section className="content">
             <FoodSection items={foodData}/>
             <DrinkSection items={drinkData}/>
             <DessertSection items={dessertData}/>
