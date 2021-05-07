@@ -38,6 +38,7 @@ export default function App() {
         Object.entries(orderedItems).forEach((item) => {
            total += changeComaToDot(item[1].price) * parseInt(item[1].quantity)
         })
+        total = total.toFixed(2)
         setTotalPrice(total)
     }
 
@@ -62,6 +63,10 @@ export default function App() {
         delete orderedItems[item.name]
     }
 
+    const resetOrderedItems = () => {
+        setOrderedItems({})
+    }
+
     return (
         <Router>
             <Header />
@@ -76,7 +81,7 @@ export default function App() {
                 </Route>
 
                 <Route path="/review" exact>
-                    <ReviewOrder totalPrice={totalPrice} orderedItems={orderedItems} closeOrder={closeOrder}/>
+                    <ReviewOrder totalPrice={totalPrice} orderedItems={orderedItems} closeOrder={closeOrder} resetOrderedItems={resetOrderedItems}/>
                 </Route>
             </Switch>
         </Router>
