@@ -65,6 +65,7 @@ export default function App() {
 
     const resetOrderedItems = () => {
         setOrderedItems({})
+        setAllSelected({foodSelected: false, drinkSelected: false, dessertSelected: false})
     }
 
     return (
