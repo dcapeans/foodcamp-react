@@ -102,6 +102,7 @@ header p {
     border-style: none;
     background-color: transparent;
     font-size: 22px;
+    outline: none;
 }
 
 .minus__button {
@@ -200,7 +201,7 @@ footer {
     outline: none;
 }
 
-.button--active {
+.active {
     background: #32b72f;
 }
 

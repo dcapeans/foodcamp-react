@@ -1,7 +1,3 @@
-import DessertSection from "./DessertSection";
-import DrinkSection from "./DrinkSection";
-import FoodSection from "./FoodSection";
-
 const data = {
     foodData: [
         {
@@ -83,14 +79,4 @@ const data = {
     ],
 }
 
-const {foodData, drinkData, dessertData} = data
-
-export default function Content() {
-    return (
-        <section className="content">
-            <FoodSection items={foodData}/>
-            <DrinkSection items={drinkData}/>
-            <DessertSection items={dessertData}/>
-        </section>
-    )
-}
+export default data
