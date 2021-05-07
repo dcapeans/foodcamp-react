@@ -1,20 +1,23 @@
 import Card from "./Card"
 import React from "react"
 
-export default function DessertSection({items, setDessertSelected}) {
+export default function DessertSection({items, setDessertSelected, setOrder, removeSelectedItems}) {
     const [selecteds, setSelecteds] = React.useState({})
 
-    const addSelected = (id) => {
+    const addSelected = (id, item) => {
         if(!selecteds[id]){
-            setSelecteds({...selecteds, [id]:{id:id, quantity: 1}})
+            const foodItem = {...item, id:id, quantity: 1}
+            setSelecteds({...selecteds, [id]: foodItem})
             setDessertSelected(true)
+            setOrder(foodItem)
         }
     }
 
-    const removeSelected = (id) => {
+    const removeSelected = (id, item) => {
         const newState = {...selecteds, [id]: undefined}
         setSelecteds(newState)
         setDessertSelected(checkHasSelected(newState))
+        removeSelectedItems(item)
     }
 
     const checkHasSelected = (state) => {
@@ -27,18 +30,19 @@ export default function DessertSection({items, setDessertSelected}) {
         return hasSelected
     }
 
-    const increaseCounter = (id) => {
+    const increaseCounter = (id, item) => {
         setSelecteds({...selecteds, [id]:{id:id, quantity: selecteds[id].quantity + 1}})
+        setOrder({...item, id:id, quantity: selecteds[id].quantity + 1})
     }
 
-    const decreaseCounter = (id) => {
+    const decreaseCounter = (id, item) => {
         if(selecteds[id].quantity > 1){
             setSelecteds({...selecteds, [id]:{id:id, quantity: selecteds[id].quantity - 1}})
+            setOrder({...item, id:id, quantity: selecteds[id].quantity - 1})
         } else {
-            removeSelected(id)
+            removeSelected(id, item)
         }
     }
-
 
     return (
         <section>
@@ -49,11 +53,10 @@ export default function DessertSection({items, setDessertSelected}) {
                         key={i} 
                         {...item} 
                         isChecked={selecteds[i]} 
-                        addSelected={addSelected} 
-                        removeSelected={removeSelected}
+                        addSelected={() => addSelected(i, item)}
                         id={i} 
-                        increaseCounter={increaseCounter}
-                        decreaseCounter={decreaseCounter}
+                        increaseCounter={() => increaseCounter(i, item)}
+                        decreaseCounter={() => decreaseCounter(i, item)}
                         quantity={selecteds[i] ? selecteds[i].quantity : 0} 
                     />
                 ))}

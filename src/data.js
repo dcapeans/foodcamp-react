@@ -4,7 +4,7 @@ const data = {
             name: "Frango Yin Yang",
             image: "/assets/img/frango_yin_yang 1.png",
             text: "Um pouco de batata, um pouco de salada",
-            price: "15,00"
+            price: "15,50"
         },
         {
             name: "Carne Yin Yang",
@@ -36,7 +36,7 @@ const data = {
             name: "Guaraná gelado",
             image: "/assets/img/guarana.png",
             text: "Lata 350ml",
-            price: "6,00"
+            price: "6,50"
         },
         {
             name: "Pepsi gelada",
@@ -56,7 +56,7 @@ const data = {
             name: "Pudim",
             image: "/assets/img/pudim 1.png",
             text: "Apenas pudim",
-            price: "8,00"
+            price: "8,90"
         },
         {
             name: "Torta",

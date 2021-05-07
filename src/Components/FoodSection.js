@@ -1,20 +1,23 @@
-import React from "react"
 import Card from "./Card"
+import React from "react"
 
-export default function FoodSection({items, setFoodSelected}) {
+export default function FoodSection({items, setFoodSelected, setOrder, removeSelectedItems}) {
     const [selecteds, setSelecteds] = React.useState({})
 
-    const addSelected = (id) => {
+    const addSelected = (id, item) => {
         if(!selecteds[id]){
-            setSelecteds({...selecteds, [id]:{id:id, quantity: 1}})
+            const foodItem = {...item, id:id, quantity: 1}
+            setSelecteds({...selecteds, [id]: foodItem})
             setFoodSelected(true)
+            setOrder(foodItem)
         }
     }
 
-    const removeSelected = (id) => {
+    const removeSelected = (id, item) => {
         const newState = {...selecteds, [id]: undefined}
         setSelecteds(newState)
         setFoodSelected(checkHasSelected(newState))
+        removeSelectedItems(item)
     }
 
     const checkHasSelected = (state) => {
@@ -27,15 +30,17 @@ export default function FoodSection({items, setFoodSelected}) {
         return hasSelected
     }
 
-    const increaseCounter = (id) => {
+    const increaseCounter = (id, item) => {
         setSelecteds({...selecteds, [id]:{id:id, quantity: selecteds[id].quantity + 1}})
+        setOrder({...item, id:id, quantity: selecteds[id].quantity + 1})
     }
 
-    const decreaseCounter = (id) => {
+    const decreaseCounter = (id, item) => {
         if(selecteds[id].quantity > 1){
             setSelecteds({...selecteds, [id]:{id:id, quantity: selecteds[id].quantity - 1}})
+            setOrder({...item, id:id, quantity: selecteds[id].quantity - 1})
         } else {
-            removeSelected(id)
+            removeSelected(id, item)
         }
     }
 
@@ -43,16 +48,15 @@ export default function FoodSection({items, setFoodSelected}) {
         <section>
             <span className="section__title">Primeiro, seu prato</span>
             <div className="content__articles food">
-                {items.map((item, i) =>(
+                {items.map((item, i) => (
                     <Card 
                         key={i} 
                         {...item} 
                         isChecked={selecteds[i]} 
-                        addSelected={addSelected} 
-                        removeSelected={removeSelected}
+                        addSelected={() => addSelected(i, item)} 
                         id={i} 
-                        increaseCounter={increaseCounter}
-                        decreaseCounter={decreaseCounter}
+                        increaseCounter={() => increaseCounter(i, item)}
+                        decreaseCounter={() => decreaseCounter(i, item)}
                         quantity={selecteds[i] ? selecteds[i].quantity : 0} 
                     />
                 ))}
