@@ -48,7 +48,7 @@ export default function App() {
         })
         message += `Total: R$ ${totalPrice}`
         const uriMessage = encodeURIComponent(message);
-        const link = "https://wa.me/5521912345678?text=" + uriMessage;
+        const link = "https://wa.me/5521991234567?text=" + uriMessage;
         window.open(link);
     }
 
